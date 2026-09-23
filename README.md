@@ -21,27 +21,33 @@ python3 -m http.server 8000
 # 然后打开 http://localhost:8000
 ```
 
-## 部署到 GitHub Pages
+## 已经部署好了
 
-1. 新建一个仓库，例如 `acceed-site`（或 `<你的用户名>.github.io` 以获得根域名）。
-2. 把本目录所有文件推上去：
-   ```bash
-   git init
-   git add .
-   git commit -m "acceed 官网"
-   git branch -M main
-   git remote add origin https://github.com/<用户名>/<仓库名>.git
-   git push -u origin main
-   ```
-3. 仓库页面 → **Settings → Pages** → Source 选 **Deploy from a branch** → Branch 选 `main` + `/ (root)` → Save。
-4. 约 1 分钟后访问 `https://<用户名>.github.io/<仓库名>/`。
-5. 如果绑定自定义域名：在仓库 Pages 设置里填域名，并把 `index.html` 中的 `canonical` 和 `og:` 链接改成你的域名。
+- 线上地址：**https://gugugu0710.github.io/acceed-site/**
+- 仓库地址：**https://github.com/gugugu0710/acceed-site**
+- 部署方式：Pages 的 `main` 分支根目录（`Source: Deploy from a branch → main / (root)`）
+
+以后只要把改动提交并推送，几十秒后线上就会自动更新：
+
+```bash
+git add -A
+git commit -m "更新内容"
+git push
+```
+
+> 本机提示：这台 Mac 上没有系统 Git（Xcode 命令行工具未安装），仓库用的是 Codex 自带 Git 与 GitHub CLI（`~/.local/share/codex-tools/bin/gh`）。
+> 直连 GitHub 不稳定，推送时走本机 Clash 代理最稳：
+>
+> ```bash
+> export HTTPS_PROXY=http://127.0.0.1:7897
+> git push
+> ```
 
 ## 需要替换的内容（搜索 `TODO`）
 
 | 位置 | 现在写的 | 说明 |
 | --- | --- | --- |
-| `index.html` `<link rel="canonical">` | `https://REPLACE-WITH-YOUR-DOMAIN/` | 换成正式域名 |
+| `index.html` 里的 `canonical` / `og:url` | `https://gugugu0710.github.io/acceed-site/` | 已填好；换成自定义域名时再改 |
 | 预约区 / 页脚 | `021-0000 0000`、`hello@example.com` | 换成真实电话与邮箱，同时更新 `tel:`、`mailto:` 链接 |
 | 预约区 | `上海市黄浦区（示例地址，请替换）` | 换成真实地址（地图链接也可以加） |
 | 菜单区 | 秋季八品与价格 `¥2,880` / `¥1,280` | 换成真实菜单、价格、更新日期 |
